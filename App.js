@@ -3,7 +3,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import Header from './components/Header';
-import StartGameScreen from './components/StartGameScreen';
+import StartGameScreen from './screen/StartGameScreen';
 
 export default function App() {
   return (
