@@ -15,6 +15,10 @@ const StartGameScreen = () => {
         )
     }
 
+    let resetInputHandler = () => {
+        setEnteredText('');
+    }
+
     return (
      <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss() }}>
             <View style={styles.screen}>
@@ -31,7 +35,7 @@ const StartGameScreen = () => {
                      onChangeText={inputChangeHandler} 
                      value={enteredtext}/>
                     <View style={styles.buttonContainer}>
-                        <View style={styles.button}><Button title="Reset" color={Colors.accent} /></View>
+                        <View style={styles.button}><Button title="Reset" color={Colors.accent} onPress={resetInputHandler} /></View>
                         <View style={styles.button}><Button title="confirm" color={Colors.primary } /></View>
                     </View>
                 </Card>
