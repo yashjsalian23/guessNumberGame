@@ -4,6 +4,7 @@ import { View, Text, StyleSheet, Button, TouchableWithoutFeedback, Keyboard, Ale
 import Card from '../components/Card';
 import Colors from '../constants/colors';
 import Input from '../components/Input';
+import NumberContainer from '../components/NumberContainer';
 
 const StartGameScreen = () => {
 
@@ -37,7 +38,12 @@ const StartGameScreen = () => {
 
     let confirmedOutput;
     if(confirmed){
-        confirmedOutput = <Text>You have selected : {selectedNumber}</Text>
+        confirmedOutput =  
+            <Card style={styles.summaryContainer}>
+                <Text>You have selected</Text>
+                <NumberContainer>{selectedNumber}</NumberContainer>
+                <Button title="START GAME" />
+            </Card>
     }
 
     return (
@@ -93,7 +99,11 @@ const styles = StyleSheet.create({
     input: {
         width: 100,
         textAlign: "center"
-    }
+    },
+    summaryContainer: {
+        marginTop: 20,
+        alignItems: 'center'
+      }
 });
 
 export default StartGameScreen;
