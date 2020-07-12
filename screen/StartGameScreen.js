@@ -8,6 +8,8 @@ import Input from '../components/Input';
 const StartGameScreen = () => {
 
     const [enteredtext, setEnteredText] = useState('');
+    const [confirmed, setConfirmed] = useState(false);
+    const [selectedNumber, setSelectedNumber] = useState();
 
     let inputChangeHandler = inputText => {
         setEnteredText(
@@ -17,6 +19,22 @@ const StartGameScreen = () => {
 
     let resetInputHandler = () => {
         setEnteredText('');
+        setConfirmed(false);
+    }
+
+    let confirmInputHandler = () => {
+        let confirmedValue = parseInt(enteredtext);
+        if(confirmedValue === NaN || confirmedValue <= 0 || confirmedValue >= 99){
+            return;
+        }
+        setConfirmed(true);
+        setSelectedNumber(confirmedValue);
+        setEnteredText('');
+    }
+
+    let confirmedOutput;
+    if(confirmed){
+        confirmedOutput = <Text>You have selected : {selectedNumber}</Text>
     }
 
     return (
@@ -36,9 +54,10 @@ const StartGameScreen = () => {
                      value={enteredtext}/>
                     <View style={styles.buttonContainer}>
                         <View style={styles.button}><Button title="Reset" color={Colors.accent} onPress={resetInputHandler} /></View>
-                        <View style={styles.button}><Button title="confirm" color={Colors.primary } /></View>
+                        <View style={styles.button}><Button title="confirm" color={Colors.primary} onPress={confirmInputHandler} /></View>
                     </View>
                 </Card>
+                {confirmedOutput}
             </View>
      </TouchableWithoutFeedback>
     );
